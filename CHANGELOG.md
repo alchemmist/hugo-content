@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1
+
+Move browser libraries from `vendor` to `lib`: Go module archives exclude
+`vendor` directories. Validate the downloaded package in CI so releases contain
+all self-hosted runtime assets.
+
 ## v0.1.0
 
 Initial extraction of the blog's content rendering into an independent Hugo module.

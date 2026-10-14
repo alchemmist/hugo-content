@@ -4,8 +4,8 @@
     src="{{ $script.RelPermalink }}"
     integrity="{{ $script.Data.Integrity }}"
     data-hc-runtime
-    {{ if ne (.Param "content.zoom") false }}data-zoom="{{ "hugo-content/vendor/zoom.js" | relURL }}"{{ end }}
-    {{ if and (.Store.Get "hc:mermaid") (ne (.Param "content.mermaid") false) }}data-mermaid="{{ "hugo-content/vendor/mermaid.js" | relURL }}"{{ end }}
-    {{ if and (.Store.Get "hc:math") (ne (.Param "content.math") false) }}data-math="{{ "hugo-content/vendor/mathjax" | relURL }}"{{ end }}
+    {{ if ne (.Param "content.zoom") false }}data-zoom="{{ "hugo-content/lib/zoom.js" | relURL }}"{{ end }}
+    {{ if and (.Store.Get "hc:mermaid") (ne (.Param "content.mermaid") false) }}data-mermaid="{{ "hugo-content/lib/mermaid.js" | relURL }}"{{ end }}
+    {{ if and (.Store.Get "hc:math") (ne (.Param "content.math") false) }}data-math="{{ "hugo-content/lib/mathjax" | relURL }}"{{ end }}
     defer
   ></script>

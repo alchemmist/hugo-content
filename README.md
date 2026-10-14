@@ -60,7 +60,7 @@ For a clean consumer installation, replace the local directive with a released v
 
 ```sh
 hugo mod init example.com/my-site
-hugo mod get github.com/alchemmist/hugo-content@v0.1.0
+hugo mod get github.com/alchemmist/hugo-content@v0.1.1
 ```
 
 

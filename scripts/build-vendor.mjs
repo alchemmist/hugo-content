@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const destination = "static/hugo-content/vendor";
+const destination = "static/hugo-content/lib";
 await rm(destination, { recursive: true, force: true });
 await mkdir(destination, { recursive: true });
 await build({

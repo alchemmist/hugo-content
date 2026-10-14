@@ -27,5 +27,9 @@ jobs:
           tar -xzf "hugo_${HUGO_VERSION}_linux-amd64.tar.gz" hugo
           sudo install hugo /usr/local/bin/hugo
       - run: make vendor
-      - run: git diff --exit-code -- static/hugo-content/vendor licenses/javascript-notices.txt
+      - run: git diff --exit-code -- static/hugo-content/lib licenses/javascript-notices.txt
       - run: make check
+      - name: Check the downloaded Go module
+        env:
+          MODULE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python3 tests/package.py "$MODULE_REVISION"
