@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {{ partial "content/head.html" . }}
+    {{ $demo := resources.Get "demo.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $demo.RelPermalink }}" integrity="{{ $demo.Data.Integrity }}" />
+    <title>{{ .Title }} — {{ .Site.Title }}</title>
+  </head>
+  <body class="content-demo">
+    {{ block "main" . }}{{ end }}
+    {{ partial "content/scripts.html" . }}
+    {{ $script := resources.Get "demo.js" | minify | fingerprint }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+  </body>
+</html>

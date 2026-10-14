@@ -1,0 +1,6 @@
+{{- .Page.Store.Set "hc:math" true -}}
+{{- if eq .Type "block" -}}
+  <div class="hc-math">\[{{ .Inner }}\]</div>
+{{- else -}}
+  \({{ .Inner }}\)
+{{- end -}}

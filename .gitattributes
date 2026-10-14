@@ -1,0 +1,6 @@
+static/hugo-content/vendor/** -whitespace linguist-vendored=true
+licenses/** -whitespace
+*.woff2 binary
+*.mp4 binary
+*.gif binary
+*.png binary

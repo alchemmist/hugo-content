@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <a class="demo-skip" href="#demo-title">Перейти к содержанию</a>
+  <header class="demo-header">
+    <a class="demo-brand" href="{{ "/" | relURL }}">
+      <span class="demo-mark" aria-hidden="true">∴</span>
+      <span>hugo-content</span>
+    </a>
+    <span class="demo-status">Образец контента</span>
+  </header>
+  <div class="demo-layout">
+    <aside class="demo-sidebar" aria-label="Оглавление">
+      <details open>
+        <summary>На этой странице</summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    <main id="demo-main">
+      <article class="demo-article">
+        <h1 id="demo-title" tabindex="-1">{{ .Title }}</h1>
+        {{ partial "content/body.html" . }}
+      </article>
+      <footer class="demo-footer">
+        <a href="#demo-title">К началу ↑</a>
+        <span>Типографика и компоненты Hugo Content</span>
+      </footer>
+    </main>
+  </div>
+{{ end }}

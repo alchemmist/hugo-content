@@ -1,0 +1,11 @@
+{{- $content := .Content -}}
+  {{- $script := resources.Get "hugo-content/runtime.js" | minify | fingerprint -}}
+  <script
+    src="{{ $script.RelPermalink }}"
+    integrity="{{ $script.Data.Integrity }}"
+    data-hc-runtime
+    {{ if ne (.Param "content.zoom") false }}data-zoom="{{ "hugo-content/vendor/zoom.js" | relURL }}"{{ end }}
+    {{ if and (.Store.Get "hc:mermaid") (ne (.Param "content.mermaid") false) }}data-mermaid="{{ "hugo-content/vendor/mermaid.js" | relURL }}"{{ end }}
+    {{ if and (.Store.Get "hc:math") (ne (.Param "content.math") false) }}data-math="{{ "hugo-content/vendor/mathjax" | relURL }}"{{ end }}
+    defer
+  ></script>

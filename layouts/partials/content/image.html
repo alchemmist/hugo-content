@@ -1,0 +1,35 @@
+{{- $src := .src -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := trim (printf "hc-image %s" (.class | default "")) " " -}}
+{{- $maxw := int (.maxw | default 0) -}}
+{{- $style := cond (gt $maxw 0) (printf "width:%dpx" $maxw) "" -}}
+{{- $url := urls.Parse $src -}}
+{{- $local := and (not $url.IsAbs) (not (hasPrefix $src "//")) -}}
+{{- $raster := in (slice ".png" ".jpg" ".jpeg" ".webp") (lower (path.Ext $url.Path)) -}}
+{{- $res := false -}}
+{{- if $local -}}
+  {{- if and .page (not (hasPrefix $src "/")) -}}
+    {{- $res = .page.Resources.GetMatch $url.Path -}}
+  {{- end -}}
+  {{- if not $res -}}
+    {{- $res = resources.Get (strings.TrimPrefix "/" $url.Path) -}}
+  {{- end -}}
+  {{- if $res -}}{{- $src = $res.RelPermalink -}}{{- else -}}{{- $src = strings.TrimPrefix "/" $src | relURL -}}{{- end -}}
+{{- end -}}
+{{- $image := false -}}
+{{- if and $res $raster -}}
+  {{- $width := math.Min $res.Width 1600 -}}
+  {{- $image = $res.Resize (printf "%dx webp q80" (int $width)) -}}
+  {{- $src = $image.RelPermalink -}}
+{{- end -}}
+<img
+  src="{{ $src | safeURL }}"
+  alt="{{ $alt }}"
+  class="{{ $class }}"
+  {{- with $image }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}
+  {{- with .id }} id="{{ . }}"{{ end }}
+  {{- with .title }} title="{{ . }}"{{ end }}
+  {{- with $style }} style="{{ . | safeCSS }}"{{ end }}
+  loading="{{ .loading | default "lazy" }}"
+  decoding="async"
+/>

@@ -1,0 +1,38 @@
+{{- $alt := .Text -}}
+{{- $maxw := 0 -}}
+{{- if strings.Contains $alt "|" -}}
+  {{- $parts := split $alt "|" -}}
+  {{- $alt = index $parts 0 -}}
+  {{- $size := index $parts (sub (len $parts) 1) -}}
+  {{- with (findRE "^[0-9]+" $size) -}}
+    {{- $maxw = int (index . 0) -}}
+  {{- end -}}
+{{- end -}}
+{{- $url := urls.Parse .Destination -}}
+{{- if eq (lower (path.Ext $url.Path)) ".mp4" -}}
+  {{- $src := .Destination -}}
+  {{- $resource := false -}}
+  {{- if and (not $url.IsAbs) (not (hasPrefix $src "//")) -}}
+    {{- $resource = .Page.Resources.GetMatch (strings.TrimPrefix "/" $url.Path) -}}
+    {{- if not $resource -}}{{- $resource = resources.Get (strings.TrimPrefix "/" $url.Path) -}}{{- end -}}
+    {{- if $resource -}}{{- $src = $resource.RelPermalink -}}{{- else -}}{{- $src = strings.TrimPrefix "/" $src | relURL -}}{{- end -}}
+  {{- end -}}
+  <video
+    class="content-video"
+    src="{{ $src | safeURL }}"
+    aria-label="{{ .Title | default $alt | default .Page.Title }}"
+    controls loop muted playsinline preload="metadata"
+    {{ with $maxw }}style="width: {{ math.Min 100 . }}%;"{{ end }}
+  ></video>
+{{- else -}}
+{{- if not $alt -}}
+  {{- $alt = printf "Illustration for %s" .Page.Title -}}
+{{- end -}}
+{{- partial "content/image.html" (dict
+  "page" .Page
+    "src" .Destination
+  "alt" $alt
+  "title" .Title
+  "maxw" $maxw
+) -}}
+{{- end -}}

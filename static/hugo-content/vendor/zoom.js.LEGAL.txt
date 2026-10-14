@@ -1,0 +1,4 @@
+Bundled license information:
+
+medium-zoom/dist/medium-zoom.esm.js:
+  /*! medium-zoom 1.1.0 | MIT License | https://github.com/francoischalifour/medium-zoom */
