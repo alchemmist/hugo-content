@@ -26,7 +26,7 @@ The module exposes three partials. Use them in this order:
 </body>
 ```
 
-`content/head.html` loads the module fonts and stylesheet. `content/body.html` renders `.Content` inside a `div.hc-content`. `content/scripts.html` loads the vendored JavaScript and initializes math, Mermaid, and image zoom when the page uses those features.
+`content/head.html` loads the module fonts and stylesheet. Font URLs contain content hashes, so hosts may cache fingerprinted `.woff2` files with `Cache-Control: public, max-age=31536000, immutable`. The body and UI fonts are preloaded; the symbol font is requested only for its supported glyph ranges. Fonts live in Hugo assets and are published through this partial, including when the site is served under a URL prefix. `content/body.html` renders `.Content` inside a `div.hc-content`. `content/scripts.html` loads the vendored JavaScript and initializes math, Mermaid, and image zoom when the page uses those features.
 
 The module styles are scoped to `.hc-content`. A site can tune the presentation with these custom properties:
 

@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("source", type=Path)
 parser.add_argument("nerd_font", type=Path)
 args = parser.parse_args()
-destination = Path(__file__).resolve().parents[1] / "static/hugo-content/fonts"
+destination = Path(__file__).resolve().parents[1] / "assets/hugo-content/fonts"
 destination.mkdir(parents=True, exist_ok=True)
 fonts = [
     ("cmu.serif-roman.woff2", "Hugo Content Serif", "Regular"),

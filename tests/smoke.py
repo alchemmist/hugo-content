@@ -1,3 +1,4 @@
+import hashlib
 import re
 import shutil
 import subprocess
@@ -166,6 +167,25 @@ def assert_urls_resolve(html, output):
         check((output / relative).exists(), "asset URL does not resolve: " + value)
 
 
+
+def assert_font_delivery(html, output):
+    stylesheet = re.search(r'<link rel="stylesheet" href="([^"]+)"', html).group(1)
+    css = (output / stylesheet.removeprefix("/docs/")).read_text()
+    urls = re.findall(r'url\([\"\']?([^\)\"\']+\.woff2)[\"\']?\)', css)
+    check(len(urls) == 5, "expected all five bundled font faces")
+    for url in urls:
+        check(url.startswith("/docs/"), "font URL lost base path")
+        font = output / url.removeprefix("/docs/")
+        check(font.is_file(), "font URL does not resolve: " + url)
+        digest = hashlib.sha256(font.read_bytes()).hexdigest()
+        check("." + digest + ".woff2" in url, "font URL is not content fingerprinted")
+    preloads = re.findall(r'<link rel="preload" href="([^"]+)" as="font" type="font/woff2" crossorigin', html)
+    check(len(preloads) == 2, "expected body and UI font preloads")
+    check(set(preloads).issubset(urls), "preloads and CSS use different font URLs")
+    check(not any("SymbolsNerd" in url for url in preloads), "symbol font must load on demand")
+    check("unicode-range:" in css, "symbol font is not restricted to supported glyphs")
+
+
 def main():
     temp, _, output = build({"math": True, "mermaid": True, "zoom": True})
     try:
@@ -180,6 +200,8 @@ def main():
         check("alchemmist.xyz" not in rich and "remark42" not in rich and "umami" not in rich, "blog-specific hardcode leaked into output")
         check("data-mermaid=" in rich and "data-math=" in rich, "enabled runtime flags are missing")
         check("data-mermaid=" not in minimal and "data-math=" not in minimal, "empty runtime flags leaked into minimal page")
+        assert_font_delivery(rich, output)
+        assert_font_delivery(minimal, output)
         assert_urls_resolve(rich, output)
         assert_urls_resolve(minimal, output)
     finally:
