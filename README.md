@@ -45,7 +45,7 @@ The module styles are scoped to `.hc-content`. A site can tune the presentation 
 
 The defaults preserve the blog's content typography; the example shell adds spacing and navigation. Page shells, navigation, and prose or poetry layouts remain the responsibility of the host site.
 
-The example site uses the module's local JetBrains Mono face. CourierCyr is specific to the author's blog shell and is not redistributed by this module.
+The example site uses the module's local JetBrains Mono face. Set `--hc-font-mono` on an ancestor such as `:root` to override both code and UI typography, including Mermaid labels. For example, `:root { --hc-font-mono: "CourierCyr", monospace; }` uses the same family as the author's blog when the host supplies its font faces. CourierCyr is not redistributed by this module. Set `params.content.typography.monoFamily` to the custom family name to skip the bundled UI font preload. The host is responsible for loading and preloading custom font files; bundled font URLs remain fingerprinted.
 
 ## Run the example
 

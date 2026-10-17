@@ -1,7 +1,7 @@
 .hc-content {
   --hc-font-body: "NerdFontsSymbols Nerd Font", "Computer Modern Roman", serif;
-  --hc-font-code: "NerdFontsSymbols Nerd Font", "Computer Modern Typewriter", monospace;
-  --hc-font-ui: "JetBrains Mono", monospace;
+  --hc-font-code: var(--hc-font-mono, "NerdFontsSymbols Nerd Font", "Computer Modern Typewriter", monospace);
+  --hc-font-ui: var(--hc-font-mono, "JetBrains Mono", monospace);
   --hc-font-size: 18px;
   --hc-color-text: #000;
   --hc-color-link: #000;
@@ -359,7 +359,7 @@
   user-select: none;
 }
 .hc-content .mermaid * {
-  font-family: "Computer Modern Typewriter", "NerdFontsSymbols Nerd Font";
+  font-family: var(--hc-font-code);
   font-size: 1rem;
 }
 

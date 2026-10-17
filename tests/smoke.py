@@ -63,6 +63,9 @@ style = 'github'
 noClasses = false
 """ % (str(flags["math"]).lower(), str(flags["mermaid"]).lower(), str(flags["zoom"]).lower())
     )
+    if flags.get("custom_mono"):
+        with path.open("a") as output:
+            output.write('\n[params.content.typography]\nmonoFamily = "CourierCyr"\n')
 
 
 def write_base_layout(path):
@@ -168,7 +171,7 @@ def assert_urls_resolve(html, output):
 
 
 
-def assert_font_delivery(html, output):
+def assert_font_delivery(html, output, custom_mono=False):
     stylesheet = re.search(r'<link rel="stylesheet" href="([^"]+)"', html).group(1)
     css = (output / stylesheet.removeprefix("/docs/")).read_text()
     urls = re.findall(r'url\([\"\']?([^\)\"\']+\.woff2)[\"\']?\)', css)
@@ -180,13 +183,21 @@ def assert_font_delivery(html, output):
         digest = hashlib.sha256(font.read_bytes()).hexdigest()
         check("." + digest + ".woff2" in url, "font URL is not content fingerprinted")
     preloads = re.findall(r'<link rel="preload" href="([^"]+)" as="font" type="font/woff2" crossorigin', html)
-    check(len(preloads) == 2, "expected body and UI font preloads")
+    check(len(preloads) == (1 if custom_mono else 2), "unexpected font preloads")
+    if custom_mono:
+        check(not any("JetBrainsMono" in url for url in preloads), "custom monospace must not preload bundled UI face")
     check(set(preloads).issubset(urls), "preloads and CSS use different font URLs")
     check(not any("SymbolsNerd" in url for url in preloads), "symbol font must load on demand")
     check("unicode-range:" in css, "symbol font is not restricted to supported glyphs")
 
 
 def main():
+    temp, _, output = build({"math": False, "mermaid": False, "zoom": False, "custom_mono": True})
+    try:
+        assert_font_delivery((output / "minimal/index.html").read_text(), output, custom_mono=True)
+    finally:
+        shutil.rmtree(temp)
+
     temp, _, output = build({"math": True, "mermaid": True, "zoom": True})
     try:
         rich = (output / "rich/index.html").read_text()

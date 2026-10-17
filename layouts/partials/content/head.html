@@ -1,6 +1,10 @@
 {{- $fonts := resources.Get "hugo-content/fonts.css" | resources.ExecuteAsTemplate "hugo-content/fonts.css" . -}}
 {{- $styles := slice $fonts (resources.Get "hugo-content/content.css") (resources.Get "hugo-content/syntax.css") | resources.Concat "hugo-content/content.css" | minify | fingerprint -}}
-{{- range slice "JetBrainsMono-Regular.woff2" "cmu.serif-roman.woff2" -}}
+{{- $preloads := slice "cmu.serif-roman.woff2" -}}
+{{- if not .Site.Params.content.typography.monoFamily -}}
+{{- $preloads = $preloads | append "JetBrainsMono-Regular.woff2" -}}
+{{- end -}}
+{{- range $preloads -}}
 {{- $font := resources.Get (printf "hugo-content/fonts/%s" .) | fingerprint -}}
 <link rel="preload" href="{{ $font.RelPermalink }}" as="font" type="font/woff2" crossorigin>
 {{- end -}}
