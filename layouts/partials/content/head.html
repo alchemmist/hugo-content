@@ -8,4 +8,5 @@
 {{- $font := resources.Get (printf "hugo-content/fonts/%s" .) | fingerprint -}}
 <link rel="preload" href="{{ $font.RelPermalink }}" as="font" type="font/woff2" crossorigin>
 {{- end -}}
+{{- partial "content/nerd-preloads.html" . -}}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />

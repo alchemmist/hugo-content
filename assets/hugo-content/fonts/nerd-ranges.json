@@ -1,0 +1,252 @@
+[
+  {
+    "path": "hugo-content/fonts/nerd/symbols-002300.woff2",
+    "unicodeRange": "U+23FB-23FE",
+    "sha256": "2e512930e52dcba0e48c12ef0f34b6182963347248af8ef494c68c1711aa996c"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-002600.woff2",
+    "unicodeRange": "U+2630, U+2665, U+26A1",
+    "sha256": "c8d3a2ebdb555854c278063aa2492181fc3311689d2da500d799a1eb8c10a2a1"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-002700.woff2",
+    "unicodeRange": "U+276C-2771",
+    "sha256": "a82a912a38b5836086d8fde125335c0be5606ee6d9bcf7d0157c6d7eef1d5f0a"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-002b00.woff2",
+    "unicodeRange": "U+2B58",
+    "sha256": "5aaa69ce7592a39c5d134d7d50de158b61d70f883ba116a93c389d0ec3c16de9"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e000.woff2",
+    "unicodeRange": "U+E000-E00A, U+E0A0-E0A3, U+E0B0-E0C8, U+E0CA, U+E0CC-E0D2, U+E0D4, U+E0D6-E0D7",
+    "sha256": "2bf4eeae429ec4986148ccdadd783e9e7e685d75933c50d8d1a6f41c739f0b7d"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e200.woff2",
+    "unicodeRange": "U+E200-E2A9",
+    "sha256": "5753fab217f163416d10b877f4e180ca7f65ea9594c15431f324dc2b9515ef99"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e300.woff2",
+    "unicodeRange": "U+E300-E3E3",
+    "sha256": "6db0c3762cb9a4663a3dc212d04566dc6ae7b7d066cf828d1896350b918bdec2"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e500.woff2",
+    "unicodeRange": "U+E5FA-E5FF",
+    "sha256": "4317e9d0883fc63b21da397a98c5f400f1e1134e8c5f6db161a0b5d064b925ac"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e600.woff2",
+    "unicodeRange": "U+E600-E6B7",
+    "sha256": "12aba14de2bbfa9b990f6dc078bf54c0736f7d961a696d58a99f564cd419f6b8"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e700.woff2",
+    "unicodeRange": "U+E700-E7FF",
+    "sha256": "809f0e3e1b24f2e5e5f184ce1fdfbf4523918360f44390a3c4a102b375005794"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00e800.woff2",
+    "unicodeRange": "U+E800-E8E3",
+    "sha256": "908b930c01a7bd8db918bc8000131c2873d9208b539f99fed30b2e575737b020"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00ea00.woff2",
+    "unicodeRange": "U+EA60-EA88, U+EA8A-EA8C, U+EA8F-EAC7, U+EAC9, U+EACC-EAFF",
+    "sha256": "4ab83559ff823926a6e526d824a9ca12cc5dbc1dbee064bd5a451d0c3d7384a5"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00eb00.woff2",
+    "unicodeRange": "U+EB00-EB09, U+EB0B-EB4E, U+EB50-EBFF",
+    "sha256": "e19faf042439e6908b833f3579f3ec052648eeeb69d9e4099f0d3327bb72df0f"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00ec00.woff2",
+    "unicodeRange": "U+EC00-EC1E",
+    "sha256": "3e92af33822cc4f405811665c3a155f814ab096e7ad060344c15e428e4f004bd"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00ed00.woff2",
+    "unicodeRange": "U+ED00-EDFF",
+    "sha256": "4ba4c6100636c2a6bb016aae5dd5244c53e7bb852e52fe52fe884416173e5798"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00ee00.woff2",
+    "unicodeRange": "U+EE00-EEFF",
+    "sha256": "a15a83028056d7edaaf75e79c22d6580199dce16bbaca9283e2e76fa535bd22f"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00ef00.woff2",
+    "unicodeRange": "U+EF00-EFCE",
+    "sha256": "94230ed5a067b09342e99d6bcd91778b8c1e2950b41c5558505b780efc59644b"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f000.woff2",
+    "unicodeRange": "U+F000-F0FF",
+    "sha256": "ee78878e1bf31c54db4c14c437eaeca81745247675fe269c26be2a6d75a79aad"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f100.woff2",
+    "unicodeRange": "U+F100-F1FF",
+    "sha256": "0aeef6f227ebb1a927f72e3629892c756793719d7ff675c145d70149bcc3b12a"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f200.woff2",
+    "unicodeRange": "U+F200-F2FF",
+    "sha256": "da491441090b5aed18948732bb64e4d76fdff07b8cc67728d993d0ff6ac9eb23"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f300.woff2",
+    "unicodeRange": "U+F300-F381",
+    "sha256": "25a2ed2c0c58e7a2eefd5f040bcad5ce9a44382efb231f916aa435402680dfc0"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f400.woff2",
+    "unicodeRange": "U+F400-F4FF",
+    "sha256": "5c6bf9c5e489a85b8fa014605c854e2d2954be589680edb04b5eecd19145fe82"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-00f500.woff2",
+    "unicodeRange": "U+F500-F533",
+    "sha256": "b97cb70a95fa803e203157863d676b5c6061fba97a08a0a10761f15433a65eda"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0000.woff2",
+    "unicodeRange": "U+F0001-F00FF",
+    "sha256": "2b6e41ff10489ee65d7a1d3c35380ec811e1980c467bd8cf9f1839ad533be03f"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0100.woff2",
+    "unicodeRange": "U+F0100-F01FF",
+    "sha256": "adcef927360830239a1afba2ae9ff51faf304859a03bc7875673e00a7a4e18f1"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0200.woff2",
+    "unicodeRange": "U+F0200-F02FF",
+    "sha256": "989a4dcb02aad55a8aae7e122902ac582814cdde9074f176d01978e5f30d3c37"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0300.woff2",
+    "unicodeRange": "U+F0300-F03FF",
+    "sha256": "670cf6f47d24dced315923956aa970b644abc50475c2d4f8d435fa5af23d38a5"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0400.woff2",
+    "unicodeRange": "U+F0400-F04FF",
+    "sha256": "80ad67a38d0f6472c05fbbcf4b418ae966595ea0bbcb3005910ed1179bf60c1f"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0500.woff2",
+    "unicodeRange": "U+F0500-F05FF",
+    "sha256": "e6bb160880a748313c535f4636073672bf7700485232eb4320399176134956bf"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0600.woff2",
+    "unicodeRange": "U+F0600-F06FF",
+    "sha256": "fe28b4d64ff87b6d4528e6b8dcfe805d8213823b75ca368c3fd61a7ee8c86781"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0700.woff2",
+    "unicodeRange": "U+F0700-F07FF",
+    "sha256": "36478456b522cd2711474ac671d9475ebfaddbbf414015681297a4dc0041d554"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0800.woff2",
+    "unicodeRange": "U+F0800-F08FF",
+    "sha256": "167133de6d777b41ce96e3fbef96aa36ed5edde891ff54e8503aca824d8da101"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0900.woff2",
+    "unicodeRange": "U+F0900-F09FF",
+    "sha256": "31a4780b1a5719781c9c2e9496b3a03281ccdaae86cda55ca864582b83126cda"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0a00.woff2",
+    "unicodeRange": "U+F0A00-F0AFF",
+    "sha256": "e7fea6c7095f6b3d9ce203604b7665ad2aae3da1c1b62a1ada58f6192541c6c1"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0b00.woff2",
+    "unicodeRange": "U+F0B00-F0BFF",
+    "sha256": "7d0347715dd2ae7add3170fce897f5e676163ce7ababa758daf24dcd9e59f101"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0c00.woff2",
+    "unicodeRange": "U+F0C00-F0CFF",
+    "sha256": "8b07377db6c670cbc6ff6fde21e3be5b0cf753467bf9dbc43fe098d95138075a"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0d00.woff2",
+    "unicodeRange": "U+F0D00-F0DFF",
+    "sha256": "1f16fc728e0f878a6389e0f636c6e69be3f6cd0c21cbe87812fd7fb6b84e029f"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0e00.woff2",
+    "unicodeRange": "U+F0E00-F0EFF",
+    "sha256": "cd182c4f49acf7c22c0cb11314171f5adbf24563f9d2bcc5cc5476e689ea3055"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f0f00.woff2",
+    "unicodeRange": "U+F0F00-F0FFF",
+    "sha256": "967619917cc8488dbc4c3e6f81202e67ec731dfd3e8125ea2f1ca9df855c0362"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1000.woff2",
+    "unicodeRange": "U+F1000-F10FF",
+    "sha256": "f7d770dffb45f3b6a93a995afdc17325eeb0d553434e7b03145cab8dd8410376"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1100.woff2",
+    "unicodeRange": "U+F1100-F11FF",
+    "sha256": "95af3ae9ce2186598ccafd26e2dc8a1c937e63c752e60f4685e6999220804b1b"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1200.woff2",
+    "unicodeRange": "U+F1200-F12FF",
+    "sha256": "2e28305fd11554be09bcf5b21f3e566540b9787b50189cd8c4d8b5d18b76577c"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1300.woff2",
+    "unicodeRange": "U+F1300-F13FF",
+    "sha256": "671f9f411ffc2d3ebbd9b2acbaa245081253dad5d71c71aa21be715ed7c11091"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1400.woff2",
+    "unicodeRange": "U+F1400-F14FF",
+    "sha256": "72198f1c21019345d069ae202723cfdd5c1f062c9c18e729332ab3ea9166987e"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1500.woff2",
+    "unicodeRange": "U+F1500-F15FF",
+    "sha256": "f4e5ab023211a83cdc95c097c5a54ef0c79cc0c332ef76af81fcd004b0af55ce"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1600.woff2",
+    "unicodeRange": "U+F1600-F16FF",
+    "sha256": "6415a32d07b6c8ad41bd0d8c653a070745696c2044ad61c1f76ef2e001c75f3c"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1700.woff2",
+    "unicodeRange": "U+F1700-F17FF",
+    "sha256": "a82ed462dca93d078aba7457bee51eae5d3ed507b53cbe97737e684d4a5f5c39"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1800.woff2",
+    "unicodeRange": "U+F1800-F18FF",
+    "sha256": "dc3096e8c1c366a0af41f45721e0dd5dd12a7fdc50d3f5af1eb8e13bb8a819f0"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1900.woff2",
+    "unicodeRange": "U+F1900-F19FF",
+    "sha256": "fee9b5500694a29dd9cca4d2cf1286db11fe4df281ee8304c956c46d765c320c"
+  },
+  {
+    "path": "hugo-content/fonts/nerd/symbols-0f1a00.woff2",
+    "unicodeRange": "U+F1A00-F1AF0",
+    "sha256": "fd2131aa41f9887dae8740e35b553a8e7acec92d5ab37c03bb502c3e70b2cdbe"
+  }
+]

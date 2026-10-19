@@ -13,3 +13,11 @@ check: build
 vendor:
 	npm ci --ignore-scripts
 	npm run build
+
+.PHONY: subset-fonts check-font-subsets
+
+subset-fonts:
+	uv run --no-project --with fonttools==4.67.0 --with brotli==1.2.0 python scripts/subset-nerd-font.py
+
+check-font-subsets:
+	uv run --no-project --with fonttools==4.67.0 --with brotli==1.2.0 python scripts/subset-nerd-font.py --check

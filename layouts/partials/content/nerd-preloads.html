@@ -1,0 +1,16 @@
+{{- $text := printf "%s\n%s" .Title .RawContent -}}
+{{- range (resources.Get "hugo-content/fonts/nerd-ranges.json" | transform.Unmarshal) -}}
+  {{- $ranges := slice -}}
+  {{- range split .unicodeRange ", " -}}
+    {{- $bounds := split (strings.TrimPrefix "U+" .) "-" -}}
+    {{- $range := printf `\x{%s}` (index $bounds 0) -}}
+    {{- if eq (len $bounds) 2 -}}
+      {{- $range = printf `%s-\x{%s}` $range (index $bounds 1) -}}
+    {{- end -}}
+    {{- $ranges = $ranges | append $range -}}
+  {{- end -}}
+  {{- if findRE (printf "[%s]" (delimit $ranges "")) $text 1 -}}
+    {{- $font := resources.Get .path | fingerprint -}}
+<link rel="preload" href="{{ $font.RelPermalink }}" as="font" type="font/woff2" crossorigin>
+  {{- end -}}
+{{- end -}}

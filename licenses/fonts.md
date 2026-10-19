@@ -18,3 +18,12 @@ See Nerd-Fonts-MIT.txt.
 Font conversion uses scripts/prepare-fonts.py with fonttools 4.67.0 and brotli
 1.2.0. The script accepts the blog's original font directory and the official
 Symbols TTF. Consumers use the committed WOFF2 files without conversion tools.
+
+The original full Symbols WOFF2 remains the source asset. Browser delivery uses
+256-codepoint Unicode-page subsets in `assets/hugo-content/fonts/nerd/` with
+exact supported Unicode ranges in `nerd-ranges.json`. Ordinary text codepoints
+are intentionally excluded, matching the original CSS ranges. Font notices
+are retained in each subset. Regenerate with `make subset-fonts`; verify exact
+reproducibility and complete supported glyph coverage with `make check-font-subsets`.
+Both commands use isolated, pinned fonttools and Brotli dependencies through uv;
+normal Hugo builds need neither Python font tooling nor uv.

@@ -26,11 +26,13 @@
   font-style: normal;
   font-display: swap;
 }
+{{ range (resources.Get "hugo-content/fonts/nerd-ranges.json" | transform.Unmarshal) }}
 @font-face {
   font-family: "NerdFontsSymbols Nerd Font";
-  unicode-range: U+23FB-23FE, U+2630, U+2665, U+26A1, U+276C-2771, U+2B58, U+E000-F8FF, U+F0000-FFFFD, U+100000-10FFFD;
-  src: url("{{ (resources.Get "hugo-content/fonts/SymbolsNerdFont-Regular.woff2" | fingerprint).RelPermalink }}") format("woff2");
+  unicode-range: {{ .unicodeRange }};
+  src: url("{{ (resources.Get .path | fingerprint).RelPermalink }}") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+{{ end }}

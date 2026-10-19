@@ -1,4 +1,5 @@
 import hashlib
+import json
 import re
 import shutil
 import subprocess
@@ -145,6 +146,9 @@ def build(flags):
     shutil.rmtree(consumer / "content")
     write_content(consumer / "content/rich/index.md", True)
     write_content(consumer / "content/minimal/index.md", False)
+    icon_page = consumer / "content/icons/index.md"
+    icon_page.parent.mkdir(parents=True)
+    icon_page.write_text("---\ntitle: Test \uf2c6\n---\n\n\ueb1b \ueb1b \ueb1c \U000f0001\n")
     shutil.copy(EXAMPLE / "assets/images/distance-between-vectors.png", consumer / "content/rich/fixture.png")
     static_images = consumer / "static/images"
     static_images.mkdir(parents=True, exist_ok=True)
@@ -171,11 +175,38 @@ def assert_urls_resolve(html, output):
 
 
 
-def assert_font_delivery(html, output, custom_mono=False):
+def range_points(value):
+    points = set()
+    for item in value.split(","):
+        bounds = item.strip().removeprefix("U+").split("-")
+        start = int(bounds[0].replace("?", "0"), 16)
+        end = int(bounds[-1].replace("?", "F"), 16)
+        points.update(range(start, end + 1))
+    return points
+
+
+def assert_font_delivery(html, output, custom_mono=False, icons=()):
     stylesheet = re.search(r'<link rel="stylesheet" href="([^"]+)"', html).group(1)
     css = (output / stylesheet.removeprefix("/docs/")).read_text()
     urls = re.findall(r'url\([\"\']?([^\)\"\']+\.woff2)[\"\']?\)', css)
-    check(len(urls) == 5, "expected all five bundled font faces")
+    manifest = json.loads((ROOT / "assets/hugo-content/fonts/nerd-ranges.json").read_text())
+    check(len(urls) == 4 + len(manifest), "expected four text faces and all symbol subsets")
+    check("SymbolsNerdFont-Regular" not in css, "full symbol font must not be delivered")
+    declared = re.findall(r"unicode-range:\s*([^;]+);", css)
+    check([range_points(value) for value in declared] == [range_points(entry["unicodeRange"]) for entry in manifest], "subset ranges changed during rendering")
+    covered = set()
+    sample_bytes = 0
+    for entry in manifest:
+        points = range_points(entry["unicodeRange"])
+        check(not covered.intersection(points), "symbol subsets overlap")
+        check(not any(point < 0x23FB for point in points), "symbol face claims ordinary text")
+        covered.update(points)
+        data = (ROOT / "assets" / entry["path"]).read_bytes()
+        check(hashlib.sha256(data).hexdigest() == entry["sha256"], "subset bytes do not match manifest")
+        if points.intersection({0xEB1B, 0xF2C6}):
+            sample_bytes += len(data)
+    check({0xEB1B, 0xF2C6}.issubset(covered), "homepage icons missing")
+    check(sample_bytes < 100000, "homepage icon subsets are too large")
     for url in urls:
         check(url.startswith("/docs/"), "font URL lost base path")
         font = output / url.removeprefix("/docs/")
@@ -183,11 +214,15 @@ def assert_font_delivery(html, output, custom_mono=False):
         digest = hashlib.sha256(font.read_bytes()).hexdigest()
         check("." + digest + ".woff2" in url, "font URL is not content fingerprinted")
     preloads = re.findall(r'<link rel="preload" href="([^"]+)" as="font" type="font/woff2" crossorigin', html)
-    check(len(preloads) == (1 if custom_mono else 2), "unexpected font preloads")
+    symbol_paths = {entry["path"] for entry in manifest if range_points(entry["unicodeRange"]).intersection(icons)}
+    expected_symbols = {url for url in urls if any(Path(path).stem + "." in url for path in symbol_paths)}
+    check(len(preloads) == (1 if custom_mono else 2) + len(expected_symbols), "unexpected font preloads")
+    check(len(preloads) == len(set(preloads)), "duplicate font preload")
+    check({url for url in preloads if "/nerd/" in url} == expected_symbols, "preload only symbol subsets used in content or title")
     if custom_mono:
         check(not any("JetBrainsMono" in url for url in preloads), "custom monospace must not preload bundled UI face")
     check(set(preloads).issubset(urls), "preloads and CSS use different font URLs")
-    check(not any("SymbolsNerd" in url for url in preloads), "symbol font must load on demand")
+    check(not any("SymbolsNerd" in url for url in preloads), "full symbol font must not preload")
     check("unicode-range:" in css, "symbol font is not restricted to supported glyphs")
 
 
@@ -213,6 +248,7 @@ def main():
         check("data-mermaid=" not in minimal and "data-math=" not in minimal, "empty runtime flags leaked into minimal page")
         assert_font_delivery(rich, output)
         assert_font_delivery(minimal, output)
+        assert_font_delivery((output / "icons/index.html").read_text(), output, icons=(0xEB1B, 0xEB1C, 0xF2C6, 0xF0001))
         assert_urls_resolve(rich, output)
         assert_urls_resolve(minimal, output)
     finally:
